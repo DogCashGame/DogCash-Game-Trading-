@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DogCash Game Trading</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="login-page" class="page">
+        <div class="login-container">
+            <div class="profile-image-container">
+                <img id="profile-image" src="https://via.placeholder.com/100" alt="Profile Image" class="profile-image">
+                <input type="file" id="upload-profile-image" style="display: none;">
+                <a href="#" id="change-profile-image">Change Profile Image</a>
+            </div>
+            <form id="login-form">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Game Panel -->
+    <div id="game-panel" class="page" style="display: none;">
+        <div class="header">
+            <div class="profile-image-container">
+                <img id="panel-profile-image" src="https://via.placeholder.com/100" alt="Profile Image" class="profile-image">
+                <input type="file" id="upload-panel-profile-image" style="display: none;">
+                <a href="#" id="change-panel-profile-image">Change Profile Image</a>
+            </div>
+            <div id="wallet">
+                <span>DSH Wallet: <span id="wallet-balance">10.00</span> DSH</span>
+            </div>
+        </div>
+        <div id="tradingview-widget"></div>
+        <div class="menu">
+            <button id="btn-invest">Invertir</button>
+            <div id="invest-options" style="display: none;">
+                <button id="btn-alza" class="invest-btn">Alza</button>
+                <button id="btn-baja" class="invest-btn">Baja</button>
+            </div>
+            <button id="btn-refer">Referencia</button>
+            <button id="btn-info">Información</button>
+            <button id="btn-social">Redes Sociales</button>
+            <button id="btn-contact">Contactos</button>
+        </div>
+    </div>
+
+    <!-- User Panel -->
+    <div id="user-panel" class="page" style="display: none;">
+        <div class="header">
+            <div class="profile-image-container">
+                <img id="user-profile-image" src="https://via.placeholder.com/100" alt="Profile Image" class="profile-image">
+                <input type="file" id="upload-user-profile-image" style="display: none;">
+                <a href="#" id="change-user-profile-image">Change Profile Image</a>
+            </div>
+            <div id="user-wallet">
+                <span>DSH Wallet: <span id="user-wallet-balance">10.00</span> DSH</span>
+            </div>
+        </div>
+        <div class="menu">
+            <button id="btn-deposit">Depositar</button>
+            <button id="btn-withdraw">Retirar</button>
+            <button id="btn-create-wallet">Crear Billetera</button>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+.profile-image-container a {
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form input {
+    margin: 5px 0;
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+#game-panel, #user-panel {
+    background-color: rgba(185, 242, 255, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+#wallet, #user-wallet {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.menu button {
+    margin: 10px 0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+}
+
+#btn-invest {
+    background-color: #800080;
+    color: white;
+}
+
+.invest-btn {
+    display: none;
+    margin-top: 5px;
+}
+
+#btn-alza {
+    background-color: #008000;
+    color: white;
+}
+
+#btn-baja {
+    background-color: #FF0000;
+    color: white;
+}
+
+#btn-refer {
+    background-color: #FF6347;
+    color: white;
+}
+
+#btn-info {
+    background-color: #6A0DAD;
+    color: white;
+}
+
+#btn-social {
+    background-color: #FF00FF;
+    color: white;
+}
+
+#btn-contact {
+    background-color: #FFA500;
+    color: white;
+}
+
+#btn-deposit {
+    background-color: #8B0000;
+    color: white;
+}
+
+#btn-withdraw {
+    background-color: #20B2AA;
+    color: white;
+}
+
+#btn-create-wallet {
+    background-color: #4682B4;
+    color: white;
+}
+document.addEventListener("DOMContentLoaded", () => {
+    const loginPage = document.getElementById("login-page");
+    const gamePanel = document.getElementById("game-panel");
+    const userPanel = document.getElementById("user-panel");
+    const loginForm = document.getElementById("login-form");
+
+    const changeProfileImage = document.getElementById("change-profile-image");
+    const uploadProfileImage = document.getElementById("upload-profile-image");
+    const profileImage = document.getElementById("profile-image");
+
+    const changePanelProfileImage = document.getElementById("change-panel-profile-image");
+    const uploadPanelProfileImage = document.getElementById("upload-panel-profile-image");
+    const panelProfileImage = document.getElementById("panel-profile-image");
+
+    const changeUserProfileImage = document.getElementById("change-user-profile-image");
+    const uploadUserProfileImage = document.getElementById("upload-user-profile-image");
+    const userProfileImage = document.getElementById("user-profile-image");
+
+    const btnInvest = document.getElementById("btn-invest");
+    const investOptions = document.getElementById("invest-options");
+    const btnAlza = document.getElementById("btn-alza");
+    const btnBaja = document.getElementById("btn-baja");
+
+    const btnRefer = document.getElementById("btn-refer");
+    const btnInfo = document.getElementById("btn-info");
+    const btnSocial = document.getElementById("btn-social");
+    const btnContact = document.getElementById("btn-contact");
+
+    const btnDeposit = document.getElementById("btn-deposit");
+    const btnWithdraw = document.getElementById("btn-withdraw");
+    const btnCreateWallet = document.getElementById("btn-create-wallet");
+
+    const walletBalance = document.getElementById("wallet-balance");
+    const userWalletBalance = document.getElementById("user-wallet
